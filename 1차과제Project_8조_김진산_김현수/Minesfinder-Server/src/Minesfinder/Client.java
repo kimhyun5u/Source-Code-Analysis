@@ -1,5 +1,6 @@
 package Minesfinder;
 
+import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -16,17 +17,18 @@ public class Client {
 	// 메시지 전달 받는 메소드
 	private void receive() {
 		Runnable thread = new Runnable() {
-
 			@Override
 			public void run() {
 				try {
 					while(true) {
 						InputStream in = socket.getInputStream();
 						byte[] buffer = new byte[512];
-						int length = in.read(buffer);
-						while(length == -1) throw new IOException();
+						DataInputStream dis = new DataInputStream(in);
+//						int length = in.read(buffer);
+//						while(length == -1) throw new IOException();
 						System.out.println("메시지 수신 성공" + socket.getRemoteSocketAddress() + " : "+ Thread.currentThread().getName());						
-						String message = new String(buffer, 0, length, "UTF-8");
+//						String message = new String(buffer, 0, length, "UTF-8");
+						String message = dis.readUTF();
 						for(Client client : Server.clients) {
 							client.send(message);
 						}

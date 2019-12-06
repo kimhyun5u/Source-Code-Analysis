@@ -36,9 +36,10 @@ public class SoundEffect {
 //		       } 
 //		  }
 //	    }
-	   
-	    public static void bgmClip() {
-	    	try {
+	 
+	   public static void bgmClip() {
+	    if(clip[0] == null) {
+		   try {
 				 File base = new File(file[0]);
 		         String basePath = base.getAbsolutePath();
 		         File audio = new File(basePath);
@@ -49,13 +50,14 @@ public class SoundEffect {
 		       }
 		       catch(Exception e) {
 		          e.printStackTrace();
-		    } 
-		  
+		       } 
+		   }
 	    	clip[0].start();
 	    	clip[0].loop(clip[0].LOOP_CONTINUOUSLY);
 	    }
 	    
 	    public static void clickClip() {
+	    	if(clip[1] == null) {
 	    	try {
 				 File base = new File(file[1]);
 		         String basePath = base.getAbsolutePath();
@@ -67,12 +69,14 @@ public class SoundEffect {
 		       }
 		       catch(Exception e) {
 		          e.printStackTrace();
-		     } 
+		     }
+	    	}
 	   
 	    	clip[1].start();
 	    }
 	    
 	    public static void boomClip() {
+	    	if(clip[2] == null) {
 	    	try {
 				 File base = new File(file[2]);
 		         String basePath = base.getAbsolutePath();
@@ -85,6 +89,7 @@ public class SoundEffect {
 		       catch(Exception e) {
 		          e.printStackTrace();
 		     } 
+	    	}
 	    	clip[2].start();
 	    }
 //	    public void startClip(int num) {

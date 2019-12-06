@@ -29,7 +29,7 @@ public class ClientGameWindow extends javax.swing.JFrame{
     private String userName;
     
 	public ClientGameWindow(Minefield minefield, String userName) {
-		startClient("211.33.5.110", 9876);
+		startClient("127.0.0.1", 9876);
 		this.userName = userName;
 		initComponents();
         isLeftPressed = false;
@@ -58,7 +58,7 @@ public class ClientGameWindow extends javax.swing.JFrame{
                         send(userName +  " " + "broke");
                     } 
                     else {
-                    	send(userName + "  "+ "finish");
+                    	send(userName + " "+ "finish");
 
                     }
                 }
